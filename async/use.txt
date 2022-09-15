@@ -1,0 +1,6 @@
+Avoid blocking
+for best performance of javascript
+have to use large function or task
+async task all time return promise
+
+convinent way "async await"
