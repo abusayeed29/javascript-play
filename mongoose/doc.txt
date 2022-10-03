@@ -1,0 +1,6 @@
+Benefits of using mongoose
+- Avstraction from raw level MongoDB
+- Relationship between NoSQL Data
+- Provides Schema Validation
+- object - Data mapping - translation of data into object that our code understands and vice versa
+- ~40 - 60% less code compared to raw mongodb packaga

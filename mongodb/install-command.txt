@@ -1,0 +1,54 @@
+Terminal
+==========
+brew services start mongodb-community@6.0
+
+mongosh
+show dbs
+quit()
+cd /usr/local/bin
+ls
+clear
+brew services stop mongodb-community@6.0
+cls
+
+
+insert:
+==========
+db.products.insertOne({name:'iphone 12', price='120000', category='smartphone', active:true});
+db.products.insertMany([{}])
+db.products.insertMany([{name:'HP Laptop', price:'80000', category:'laptop', active:true},{name:'Dell Inspiration', price:'90000', category:'Laptop',active:true}]);
+
+Find:
+==========
+db.products.find()
+db.products.find().pretty()
+
+db.products.find({active:false,category:'samrtphone'}).pretty()
+db.products.find({active:false,category:'samrtphone'}, {active:0}).pretty()
+db.products.find({category:'samrtphone'}).pretty().limit(1)
+db.products.find({category:'samrtphone'}).pretty().limit(1).skip(1)
+db.products.findOne({category:'samrtphone'})
+
+update:
+========
+db.products.updateOne({name:'iphone 12', active:true}, {$set:{price:'130000'}})
+db.products.updateMany({},{$set:{active:true}})
+
+Delete
+=======
+db.products.deleteOne({name:'iphone 12'})
+db.products.deleteMany({category:'smartphone'})
+
+
+=> Install MongoDB Compass
+=> mongoose
+  Object Data Modeling (ODM)
+
+
+Benefits of using mongoose
+- Avstraction from raw level MongoDB
+- Relationship between NoSQL Data
+- Provides Schema Validation
+- object - Data mapping - translation of data into object that our code understands and vice versa
+- ~40 - 60% less code compared to raw mongodb packaga
+
