@@ -1,0 +1,19 @@
+npm add mongoose
+
+for start  database :
+  terminal -   mongosh
+
+node.bcrypt.js
+ - npm i bcrypt
+
+
+https://www.npmjs.com/package/jsonwebtoken
+npm install jsonwebtoken
+
+https://www.npmjs.com/package/dotenv
+npm install dotenv --save
+require('dotenv').config()
+
+
+for checking token
+https://jwt.io/

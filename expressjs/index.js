@@ -1,30 +1,32 @@
 var express = require("express");
+const mongoose =  require('mongoose');
+const dotenv = require('dotenv')
+const todoHandler = require('./routeHandler/todoHandler')
+const userHandler = require('./routeHandler/userHandler')
+
+// express app initialization
 var app = express();
+dotenv.config()
+app.use(express.json());
 
-app.get("/", function (req, res) {
-    for(let i=0; i<=10; i++){
-        if(i === 5){
-            next('there ws an error');
-        }else{
-            res.write(a);
-        }
+// database connection with mongoose
+mongoose
+    .connect('mongodb://localhost:27017/todos')
+    .then(() => console.log(' connection successfull'))
+    .catch((err) => console.log(err));
+
+
+// appcation routes
+app.use('/todo', todoHandler);
+app.use('/user', userHandler);
+
+// default error handler
+function errorHandler(err, req, res, next){
+    if(res.headersSent){
+        return next(err);
     }
-    res.send(a);
-   
-});
-
-// 404 error handler 
-app.use((req, res, next) => {
-    res.send('Requested url is not found');
-})
-
-app.use((err, req, res, next) =>{
-    if(err.message){
-        res.status(500).send(err.message);
-    }else{
-        res.status(500).send('There was an error !');
-    }
-});
+    res.status(500).json({error:err});
+}
 
 app.listen(3000, () =>{
     console.log("app listening at port 3000");
