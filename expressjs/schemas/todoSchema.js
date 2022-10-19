@@ -14,6 +14,10 @@ const todoSchema = mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  user: {
+    type: mongoose.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 // intance method
@@ -27,17 +31,17 @@ todoSchema.methods = {
 };
 
 // static methods
-todoSchema.statics ={
-  findByJS: function(){
-    return this.find({title:/js/i});
+todoSchema.statics = {
+  findByJS: function () {
+    return this.find({ title: /js/i });
   },
-}
+};
 
 // query helpders
-todoSchema.query ={
-  byLanguage: function(lang){
-    return this.find({title: new RegExp(lang, "i") }); // new RegExp()
+todoSchema.query = {
+  byLanguage: function (lang) {
+    return this.find({ title: new RegExp(lang, "i") }); // new RegExp()
   },
-}
+};
 
 module.exports = todoSchema;
