@@ -17,7 +17,7 @@ const userSchema = mongoose.Schema({
     type: String,
     enum: ["active", "inactive"],
   },
-  todos:[
+  todos: [
     {
       type: mongoose.Types.ObjectId,
       ref: "Todo"

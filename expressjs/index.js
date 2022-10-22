@@ -11,7 +11,10 @@ app.use(express.json());
 
 // database connection with mongoose
 mongoose
-    .connect('mongodb://localhost:27017/todos')
+    .connect('mongodb://localhost/todos',{
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    })
     .then(() => console.log(' connection successfull'))
     .catch((err) => console.log(err));
 
@@ -22,8 +25,7 @@ app.use('/user', userHandler);
 
 // default error handler
 const errorHandler = (err, req, res, next) => {
-    console.log(err);
-    
+    //console.log(err);
     if(res.headersSent){
         return next(err);
     }
